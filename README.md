@@ -1,72 +1,48 @@
 # Local AI Resume Optimizer App
 
-## Overview
-This project is a Streamlit web app that compares a resume with a job description, estimates keyword alignment, and generates truthful optimized resume bullets using a local LLM through Ollama.
+A Streamlit app that uses Ollama (local LLM) to optimize resumes for job applications. **No data leaves your machine!**
 
-It combines:
-- ATS-style keyword alignment scoring
-- Local LLM-based resume rewriting
-- Streamlit web interface
+## Prerequisites
 
-This project does not require a paid API.
+1. **Install Ollama**: https://ollama.com/download
+2. **Pull a model**:
+   ```bash
+   ollama pull llama3.2:1b
+   ```
+3. **Start Ollama** (if not running):
+   ```bash
+   ollama serve
+   ```
+
+## Setup
+
+1. Navigate to the project directory:
+   ```bash
+   cd day7-local-ai-resume-optimizer-app
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Run the App
+
+```bash
+streamlit run app.py
+```
+
+The app will open at http://localhost:8501
 
 ## Features
-- Paste job description and resume text
-- Extract important requirements using a local LLM
-- Estimate original resume keyword alignment score
-- Generate optimized resume bullets
-- Estimate optimized resume keyword alignment score
-- Show before/after improvement
-- Display missing or weakly matched areas
-- Run locally without paid API keys
 
-## Why I Built This
-I built this project to turn my command-line AI agents into a simple portfolio-ready web app.
+- **Local Processing**: All AI processing happens locally via Ollama
+- **Keyword Analysis**: Identifies missing keywords from job descriptions
+- **Resume Optimization**: Generates improved resume bullets
+- **Multiple Model Support**: Choose from any Ollama model you have installed
 
-The goal is to learn how local LLMs can be combined with Python logic and a user interface to solve a practical career-related problem.
+## Troubleshooting
 
-## Tech Stack
-- Python
-- Streamlit
-- Ollama
-- Llama 3.2 local model
-- JSON parsing
-- Regular expressions
-
-## How It Works
-1. User pastes a job description
-2. User pastes resume content
-3. The local LLM extracts important job requirements
-4. Python calculates the original match score
-5. The local LLM rewrites the resume bullets truthfully
-6. Python calculates the optimized match score
-7. The app displays scores, gaps, and optimized bullets
-
-
-## Setup Instructions
-
-### 1. Install Ollama
-Download from:
-https://ollama.com
-
----
-
-### 2. Start Ollama server
-```bash
-ollama serve
-```
-
-### 3. Pull model
-```bash
-ollama pull llama3.2:1b
-```
-
-### 4. Install Python dependency
-```bash
-pip install ollama
-```
-
-### 5. Run the project
-```bash
-python3 day6_resume_optimizer.py
-```
+- **Ollama not running**: Start with `ollama serve`
+- **No models found**: Pull a model with `ollama pull llama3.2:1b`
+- **Port already in use**: Ollama is likely already running
